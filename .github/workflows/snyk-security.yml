@@ -19,6 +19,10 @@ on:
   pull_request:
     branches: ["master"]
   workflow_dispatch:
+
+env:
+  # This is where you will need to introduce the Snyk API token created with your Snyk account
+  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   
 permissions:
   contents: read
@@ -46,10 +50,6 @@ jobs:
       - name: Install packages
         run: npm install
       
-        env:
-          # This is where you will need to introduce the Snyk API token created with your Snyk account
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
       - name: Snyk Code test

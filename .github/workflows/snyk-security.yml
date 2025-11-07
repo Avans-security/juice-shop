@@ -42,7 +42,10 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-
+          
+      - name: Install packages
+        run: npm install
+      
         env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
